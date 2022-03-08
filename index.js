@@ -30,61 +30,61 @@ console.log(uri);
 
 
 
-async function runerw () {
-    try{
+async function runerw() {
+
+
+  // try Mothed,
+
+  try {
       await client.connect();
-      const database = client.db('Book-Reader');
-      const categorywiseCollection = database.collection('Categorywise');
-      const studentCollection = database.collection("student");
-      // const studentAddCollection = database.collection("addstudent");
-
-      app.get('/categorywise', async(req , res) => {
-        
-        const cursor = categorywiseCollection.find({});
-        const Categorywise = await cursor.toArray();
-        res.send(Categorywise);
-  
-    });
+      const database = client.db('book-man');
+      const courseCollection = database.collection('course');
 
 
-    app.get('/student', async(req , res) => {
-        
-      const cursor = studentCollection.find({});
-      const student = await cursor.toArray();
-      res.send(student);
-
-  });
-
-  app.post('/student', async(req, res) => {
-    const addstudent = req.body;
-    console.log("Hit the post api", addstudent);
-
-    const result = await studentCollection.insertOne(addstudent);
-    console.log(result);
-
-  
-
-    res.json(result);
 
 
-})
+      // creating an array in eay-world used security-camera,
+      app.get('/course', async (req, res) => {
+
+          const cursor = courseCollection.find({});
+          const coursewise = await cursor.toArray();
+          res.send(coursewise);
+
+      });
+
+
+
+
     
       
-  
-  
-  
-  
+
+
     
-  
-  
-  
+
+
       
-  
-    }
-    finally{
-      //  await client.close();
-    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
+  finally {
+      //  await client.close();
+  }
+}
 
 
 
@@ -96,7 +96,7 @@ async function runerw () {
 
 
 app.get('/', (req, res) => {
-  res.send('Hello World')
+  res.send('Hello Book Man')
 })
 
 app.listen(port, () => {
